@@ -4,7 +4,7 @@ import pandas as pd
 pd.options.mode.chained_assignment = None
 import numpy as np
 import streamlit as st
-from yahooquery import Ticker
+import yahooquery as yq
 
 # streamlit
 
@@ -18,7 +18,7 @@ st.caption('caption test')
 # function to import yahoo data using the unofficial api
 
 def get_stock_data(tickers):
-    data = Ticker(tickers).get_modules('assetProfile price summaryDetail defaultKeyStatistics') 
+    data = yq.Ticker(tickers).get_modules('assetProfile price summaryDetail defaultKeyStatistics') 
     # assetProfile : industry , price : longName & regularMarketPrice , summaryDetail : twoHundredDayAverage , 
     # defaultKeyStatistics : forwardPE , profitMargins , beta , priceToBook , forwardEps , pegRatio , enterpriseToRevenue , enterpriseToEbitda
     return data
